@@ -1,0 +1,4 @@
+@import './styles/global.css';
+@import './styles/components/AppContainer.css';
+@import './styles/components/Title.css';
+@import './styles/components/VideoContainer.css';

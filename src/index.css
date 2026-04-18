@@ -1,0 +1,7 @@
+#root {
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  font-family: "Manrope", sans-serif;
+  background-color: linear gradient(to right, #4facfe, #00f2fe);
+}
