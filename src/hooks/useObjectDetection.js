@@ -33,20 +33,41 @@ export const useObjectDetection = (drawMesh) => {
   };
 
   const detect = async (model) => {
-    if (webcamRef && webcamRef.current && webcamRef.current.video) {
+    // if (webcamRef && webcamRef.current && webcamRef.current.video) {
+    //   const video = webcamRef.current.video;
+    //   const videoWidth = video.videoWidth;
+    //   const videoHeight = video.videoHeight;
+
+    //   canvasRef.current.width = videoWidth;
+    //   canvasRef.current.height = videoHeight;
+
+    //   const predictions = await model.detect(video);
+    //   const ctx = canvasRef.current.getContext('2d');
+
+    //   drawMesh(predictions, ctx);
+    // }
+     if (
+      webcamRef &&
+      webcamRef.current &&
+      webcamRef.current.video &&
+      webcamRef.current.video.readyState === 4 // HAVE_ENOUGH_DATA
+    ) {
       const video = webcamRef.current.video;
       const videoWidth = video.videoWidth;
       const videoHeight = video.videoHeight;
 
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
+      // Only proceed if video has valid dimensions
+      if (videoWidth && videoHeight) {
+        canvasRef.current.width = videoWidth;
+        canvasRef.current.height = videoHeight;
 
-      const predictions = await model.detect(video);
-      const ctx = canvasRef.current.getContext('2d');
+        const predictions = await model.detect(video);
+        const ctx = canvasRef.current.getContext('2d');
 
-      drawMesh(predictions, ctx);
-    }
-  };
+        drawMesh(predictions, ctx);
+      }
+  }
+};
 
   return {
     webcamRef,

@@ -16,7 +16,7 @@ const App = () => {
 
   // Use front camera by default for object detection on mobile
   const videoConstraints = {
-    facingMode: { ideal: "environment" },
+    facingMode: 'user',
     width: 640,
     height: 480,
   };
