@@ -13,6 +13,14 @@ const App = () => {
     drawBoundingBoxes(predictions, ctx, handleDetectionMap);
   };
 
+
+  // Use front camera by default for object detection on mobile
+  const videoConstraints = {
+    facingMode: 'user',
+    width: 640,
+    height: 480,
+  };
+
   const { webcamRef, canvasRef, loadingModel } = useObjectDetection(drawMesh);
 
   return (
@@ -21,7 +29,7 @@ const App = () => {
         <h1 className='appTitle'>🎯 Real Time Object Detection App</h1>
         {loadingModel ? <span>Loading Model...</span> : ''}
         <div className="videoWrapper">
-          <Webcam ref={webcamRef} />
+          <Webcam ref={webcamRef} videoConstraints={videoConstraints} />
           <canvas ref={canvasRef} />
         </div>
       </div>
