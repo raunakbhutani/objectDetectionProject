@@ -11,6 +11,7 @@ A React-based web application that performs real-time object detection using you
 - 📱 **Responsive Design** - Works on different screen sizes
 - ⚡ **Zero Configuration** - No complex setup required
 
+<img width="1649" height="823" alt="person" />
 ## Tech Stack
 
 - **React** 19.2.4 - UI framework
